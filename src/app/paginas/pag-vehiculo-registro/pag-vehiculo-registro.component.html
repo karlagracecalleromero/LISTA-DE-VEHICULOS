@@ -1,0 +1,96 @@
+
+<div class=" card-header container bg-info text-white">
+  <h1> Creación Nuevo vehículo</h1>
+</div>
+
+<div class="card mb-3" style="max-width: 90%;">
+  <div class="row g-0">
+    <div class="col-md-8">
+      <div class="card-body">
+
+        <form [formGroup]="formulario">
+        <p><span class="card-text"><strong>Código: </strong></span>
+        <span>
+          <input type="text" class="form-control" id="staticCodigo" name="codigo" formControlName="codigo"  >
+          <span class="text-danger" *ngIf="formulario.get('codigo')?.errors?.['required'] && formulario.get('codigo')?.touched">Valor requerido</span>
+          <span class="text-danger" *ngIf="formulario.get('codigo')?.errors?.['codigoValidate'] && formulario.get('codigo')?.touched">Formato no válido, solo se aceptan  4 dígitos</span>
+        </span>
+        </p>
+
+        <p><span class="card-text"><strong>Confirmar Código: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="codigo" formControlName="codigo_confirm"  >
+            <span class="text-danger" *ngIf="formulario.errors?.['codigo_comparativo'] && formulario.get('codigo')?.touched">No son iguales</span>
+          </span>
+        </p>
+        <p><span class="card-text"><strong>Marca: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="marca"  formControlName="marca"  >
+
+            <span class="text-danger" *ngIf="formulario.get('marca')?.errors?.['required'] && formulario.get('marca')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+        <p><span class="card-text"><strong>Modelo: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="modelo"  formControlName="modelo"  >
+
+            <span class="text-danger"  *ngIf="formulario.get('modelo')?.errors?.['required'] && formulario.get('modelo')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+        <p><span class="card-text"><strong>Color: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="color"  formControlName="color" >
+
+            <span class="text-danger"  *ngIf="formulario.get('color')?.errors?.['required'] && formulario.get('color')?.touched">Valor requerido</span>
+          </span>
+        </p>
+
+        <p><span class="card-text"><strong>Kilometraje: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="kilometraje"  formControlName="kilometraje" >
+
+            <span class="text-danger" *ngIf="formulario.get('kilometraje')?.errors?.['required'] && formulario.get('kilometraje')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+        <p><span class="card-text"><strong>Año: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="anio" formControlName="anio"  >
+
+            <span class="text-danger" *ngIf="formulario.get('anio')?.errors?.['required'] && formulario.get('anio')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+        <p><span class="card-text"><strong>Precio: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="precio"  formControlName="precio" >
+
+            <span class="text-danger" *ngIf="formulario.get('precio')?.errors?.['required'] && formulario.get('precio')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+
+        <p><span class="card-text"><strong>Calificación: </strong></span>
+          <span>
+            <input type="text" class="form-control" id="staticCodigo" name="calificacion"  formControlName="calificacion"  >
+
+            <span class="text-danger" *ngIf="formulario.get('calificacion')?.errors?.['required'] && formulario.get('calificacion')?.touched" >Valor requerido</span>
+          </span>
+        </p>
+      </form>
+
+      </div>
+    </div>
+
+    <div class="row ">
+      <button class="badge btn btn-success text-wrap row justify-content-center my-2"  style="width: 13rem;  height:3rem; font-size: 1rem; padding: 1rem; margin: 0.3rem 1rem;" (click)="guardar()" >
+        Guardar
+      </button>
+    </div>
+    <div class="regresar">
+      <a class="btn btn-secondary" [routerLink]="['/vehiculos']">Regresar</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+

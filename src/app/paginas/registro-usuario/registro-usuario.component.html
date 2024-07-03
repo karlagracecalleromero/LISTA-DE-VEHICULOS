@@ -1,0 +1,53 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card bg-info text-white">
+        <div class="card-header">
+          <h1 class="text-center">Registro de Cliente</h1>
+        </div>
+        <div class="card-body bg-light text-dark">
+          <form [formGroup]="formulario" >
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Nombre" formControlName="nombre">
+              <span class="text-danger" *ngIf="formulario.get('nombre')?.errors?.['required'] && formulario.get('nombre')?.touched">Valor requerido</span>
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido</label>
+              <input type="text" class="form-control" id="apellido" placeholder="Apellido" formControlName="apellido">
+              <span class="text-danger" *ngIf="formulario.get('codigo')?.errors?.['apellido'] && formulario.get('apellido')?.touched">Valor requerido</span>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="contactar" (change)="toggleContact($event)">
+              <label class="form-check-label" for="contactar">Deseas ser contactado</label>
+            </div>
+
+
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input type="text" class="form-control" id="telefono" placeholder="000 000 000" formControlName="telefono"  [disabled]="!contactar">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo</label>
+              <input type="email" class="form-control" id="email" placeholder="myexample@example.com" formControlName="email"  [disabled]="!contactar">
+            </div>
+
+            <div class="row ">
+              <button class="badge btn btn-success text-wrap row justify-content-center my-2"  style="width: 13rem;  height:3rem; font-size: 1rem; padding: 1rem; margin: 0.3rem 1rem;" (click)="registrar()" >
+                Registrar Usuario
+              </button>
+            </div>
+            <div class="regresar">
+              <a class="btn btn-secondary" [routerLink]="['/home']">Regresar</a>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div class="card">
+
+
+  <h5 class="card-header">Lista de Vehículos</h5>
+  <div class="card-body">
+    <div class = "row">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Filtro</label>
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Marca" [(ngModel)]="filtro" (blur)="consultaVehiculos()">
+      </div>
+    </div>
+    <div class="row">
+      <div class="badge bg-primary text-wrap  justify-content-center my-2" style="width: 20rem;  height:3rem; font-size: 1rem; padding: 1rem; margin: 0.3rem 1rem;">
+        Filtrado por: {{filtro}}
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="column-3  row justify-content-center my-2">
+      <a  [routerLink]="['/vehiculo']" class="badge btn btn-info text-wrap" style="width: 13rem;  height:3rem; font-size: 1rem; padding: 1rem; margin: 0.3rem 1rem;">
+        Nuevo Registro
+      </a>
+    </div>
+
+
+  </div>
+
+    <div class = "row">
+      <div class="col-sm-12">
+        <table class="table table-dark">
+          <thead>
+            <tr>
+              <td colspan="1">
+                <select class="form-control" [(ngModel)]="rows" (change)="consultaVehiculos()">
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="100">100</option>
+
+                </select>
+
+              </td>
+
+
+            </tr>
+            <tr >
+              <th>
+                <button class="btn btn-primary"  [ngClass]="{'btn-warning':mostrarImagen, 'btn-primary':!mostrarImagen}" (click)="mostrar()" [innerText]="mostrarImagen ? 'Ocultar imagen': 'Mostrar imagen'">
+                  Mostrar Imagen
+                </button>
+              </th>
+              <th>Código</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Año</th>
+              <th>Color</th>
+              <th>Kilometraje</th>
+              <th>Precio</th>
+              <th>Calificación</th>
+              <th>Opciones</th>
+
+            </tr>
+          </thead>
+          <tbody>
+           <tr *ngFor="let item of listaVehiculos" class="table table-info">
+            <td><img [src]="item.foto" style="width:150px" [hidden]="!mostrarImagen">
+            </td>
+            <td><a [routerLink]="['/vehiculo/'+ item.codigo]"> {{item.codigo}}</a></td>
+            <td>{{item.marca}}</td>
+            <td>{{item.modelo}}</td>
+            <td>{{item.anio}}</td>
+            <td>{{item.color}}</td>
+            <td>{{item.kilometraje}} km</td>
+            <td>{{item.precio | currency:'USD'}}</td>
+            <td>
+              <app-calificacion class="table table-info"  [calificacion]="item.calificacion" (accionClick)="recepcion($event)"></app-calificacion>
+            </td>
+            <td>
+              <a [routerLink]="['editar/'+item.codigo]"  class="btn btn-success"> Editar</a>
+              <button class="btn btn-danger" (click)="deleteVehiculo(item.codigo)">Eliminar</button>
+            </td>
+
+           </tr>
+          </tbody>
+          <tfoot>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item" [class.disabled]="page === 1">
+                  <a class="page-link" aria-label="Previous" (accionclick)="cambiarPag(page - 1)" [class.disabled]="page === 1">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Atrás</span>
+                  </a>
+                </li>
+                <li class="page-item" *ngFor="let pag of listaPags" [class.active]="pag === page">
+                  <a class="page-link" (click)="cambiarPag(pag)">{{pag}}</a>
+                </li>
+                <li class="page-item" [class.disabled]="page === listaPags.length">
+                  <a class="page-link" aria-label="Next" (click)="cambiarPag(page + 1)" [class.disabled]="page === listaPags.length">
+                    <span class="sr-only">Siguiente</span>
+                    <span aria-hidden="true">&raquo;</span>
+
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </tfoot>
+
+        </table>
+
+      </div>
+
+    </div>
+ </div>
+ </div>
+
+

@@ -1,0 +1,49 @@
+<div class="container bg-info text-white">
+  <h1>{{vehiculo?.marca}}</h1>
+</div>
+
+<div class="card mb-3" style="max-width: 90%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{{vehiculo?.foto}}" width="375" class="text-center" alt="{{vehiculo?.marca}}">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 class="card-title">{{vehiculo?.marca}} {{vehiculo?.modelo}}</h3>
+        <p><span class="card-text"><strong>Código: </strong></span>
+        <span>{{vehiculo?.codigo}}</span>
+        </p>
+        <p><span class="card-text"><strong>Marca: </strong></span>
+          <span>{{vehiculo?.marca}}</span>
+        </p>
+        <p><span class="card-text"><strong>Modelo: </strong></span>
+          <span>{{vehiculo?.modelo}}</span>
+        </p>
+
+        <p><span class="card-text"><strong>Kilometraje: </strong></span>
+          <span>{{vehiculo?.kilometraje}}</span>
+        </p>
+        <p><span class="card-text"><strong>Año: </strong></span>
+          <span>{{vehiculo?.anio}}</span>
+        </p>
+        <p><span class="card-text"><strong>Precio: </strong></span>
+          <span>{{vehiculo?.precio |currency }}</span>
+        </p>
+
+        <p><span class="card-text"><strong>Calificación: </strong></span>
+          <span>
+            {{vehiculo?.calificacion | number }} estrellas
+
+            <app-calificacion [calificacion]="vehiculo?.calificacion"></app-calificacion>
+          </span>
+        </p>
+
+      </div>
+    </div>
+    <div class="regresar">
+      <a class="btn btn-secondary" [routerLink]="['/vehiculos']">Regresar</a>
+    </div>
+  </div>
+</div>
+
+

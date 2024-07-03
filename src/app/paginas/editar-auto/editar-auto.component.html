@@ -1,0 +1,76 @@
+
+<style>
+  .guardar {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    margin-top: 20px; /* Espaciado superior */
+  }
+  .guardar .btn {
+    padding: 10px 20px; /* Espaciado del botón */
+    font-size: 18px; /* Tamaño de fuente */
+  }
+</style>
+
+
+<div class="card">
+  <div class="container bg-info text-white">
+    <h1>Actualización detalle Vehículo</h1>
+  </div>
+  <form [formGroup]="formulario">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="staticCodigo8" name="codigo" formControlName="codigo">
+      <label for="staticCodigo8">Código</label>
+      <span class="text-danger"  *ngIf="formulario.get('codigo')?.errors?.['required']">Valor requerido</span>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo9" name="marca" formControlName="marca">
+      <label for="staticCodigo9">Marca</label>
+      <span class="text-danger" *ngIf="formulario.get('marca')?.errors?.['required']" >Valor requerido</span>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo10" name="modelo" formControlName="modelo">
+      <label for="staticCodigo10">Modelo</label>
+      <span class="text-danger"  *ngIf="formulario.get('modelo')?.errors?.['required']">Valor requerido</span>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo11" name="anio" formControlName="anio">
+      <label for="staticCodigo11">Año</label>
+      <span class="text-danger" *ngIf="formulario.get('anio')?.errors?.['required']" >Valor requerido</span>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo12" name="kilometraje" formControlName="kilometraje">
+      <label for="staticCodigo10">Kilometraje</label>
+      <label for="staticCodigo12" *ngIf="formulario.get('kilometraje')?.errors?.['required']">Kilometraje</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo13" name="precio" formControlName="precio">
+      <label for="staticCodigo10">Precio</label>
+      <label for="staticCodigo13" *ngIf="formulario.get('precio')?.errors?.['required']">Precio</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo14" name="calificacion" formControlName="calificacion">
+      <label for="staticCodigo14">Calificación</label>
+      <span class="text-danger" *ngIf="formulario.get('calificacion')?.errors?.['required']">Valor requerido</span>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="staticCodigo15" name="foto" formControlName="foto">
+      <label for="staticCodigo15">Imágen</label>
+    </div>
+  </form>
+
+  <div class="guardar">
+    <button class="btn btn-success btn-lg" (click)="guardarEdit()">
+      <i class="fas fa-save"></i> Guardar
+    </button>
+  </div>
+
+  <div class="regresar">
+    <a class="btn btn-secondary" [routerLink]="['/vehiculos']">Regresar</a>
+  </div>
+</div>
